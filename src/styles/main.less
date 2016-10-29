@@ -8,6 +8,14 @@
 
 body {
   margin: 10px;
+  outline: 0;
+}
+
+.button, .btn {
+  outline: 0;
+  &:focus {
+    outline: 0;
+  }
 }
 
 .ng2-auto-complete {
@@ -23,10 +31,10 @@ body {
   }
 }
 
-
 .yellow {
   background: @yellow;
 }
+
 .hp-yellow {
   position: relative;
   z-index: 1;
@@ -45,12 +53,12 @@ body {
   }
   &.down-side {
 
-    a.hp-link.animated{
+    a.hp-link.animated {
 
-      &:before{
+      &:before {
         height: 55% !important;
       }
-      &:after{
+      &:after {
         margin-top: -8px !important;
       }
     }
@@ -60,9 +68,9 @@ body {
   }
   &.overflow-font {
 
-    a.hp-link.animated2{
+    a.hp-link.animated2 {
 
-      &:before{
+      &:before {
         height: 62% !important;
       }
 
@@ -72,11 +80,12 @@ body {
       left: 51%;
     }
   }
-  @media(max-width: @screen-sm-max) {
+  @media (max-width: @screen-sm-max) {
     &:before {
       top: 52%;
       height: 70%;
     }
+
     &.down-side {
       &:before {
         top: 65%;
