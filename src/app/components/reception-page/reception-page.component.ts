@@ -55,17 +55,20 @@ export class ReceptionPageComponent implements OnInit {
 
   onSubmit() {
     this.visitService.visit(this.visitorFormData).subscribe((result) => {
-      this.router.navigate(['/thank-you', {
+      let routeParams: any = {
         visitorName: this.visitorFormData.name,
-        avatar: this.visitorFormData.person.avatar,
         name: this.visitorFormData.person.name,
         companyUrl: this.visitorFormData.company.url
-      }], {skipLocationChange: true});
+      };
+      if (this.visitorFormData.person.avatar) {
+        routeParams.avatar = this.visitorFormData.person.avatar;
+      }
+      this.router.navigate(['/thank-you', routeParams], {skipLocationChange: true});
     });
   }
 
   onCompanyChange() {
-    this.visitorFormData.person = undefined;
+    delete this.visitorFormData.person;
     setTimeout(() => (this.personInput.nativeElement.focus()), 400);
   }
 }

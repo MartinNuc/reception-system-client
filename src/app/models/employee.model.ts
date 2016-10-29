@@ -1,5 +1,5 @@
 export interface Employee {
-  avatar: string;
+  avatar?: string;
   name: string,
   slackId: string,
   email: string
