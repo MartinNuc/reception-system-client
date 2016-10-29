@@ -11,6 +11,36 @@ body {
   outline: 0;
 }
 
+.ut-logo {
+  background-image: url('../assets/images/logo-svg-2.svg');
+  background-size: cover;
+  height: 0;
+  padding: 0;
+
+  &.floating {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 50px;
+    padding-bottom: 35px;
+    height: auto;
+  }
+}
+
+.loading {
+  top: 30%;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+
+  .ut-logo {
+    width: 200px;
+    padding-bottom: 145px;
+    height: auto;
+    margin: 30px auto;
+  }
+}
+
 .button, .btn {
   outline: 0;
   &:focus {
