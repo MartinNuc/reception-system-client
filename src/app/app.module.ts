@@ -11,12 +11,16 @@ import {CompanyService} from './services/company.service';
 import {VisitService} from './services/visit.service';
 import {ConfigurationService} from './services/configuration.service';
 import {Ng2AutoCompleteModule} from 'ng2-auto-complete';
+import {AdminPageComponent} from './components/admin-page/admin-page.component';
+import {DatePicker} from 'ng2-datepicker/ng2-datepicker';
 
 @NgModule({
   declarations: [
     AppComponent,
     ThankYouPageComponent,
-    ReceptionPageComponent
+    ReceptionPageComponent,
+    AdminPageComponent,
+    DatePicker
   ],
   imports: [
     BrowserModule,
@@ -24,6 +28,7 @@ import {Ng2AutoCompleteModule} from 'ng2-auto-complete';
     HttpModule,
     RouterModule.forRoot([
       {path: 'thank-you', component: ThankYouPageComponent},
+      {path: 'admin', component: AdminPageComponent},
       {path: '', component: ReceptionPageComponent},
       {path: '**', component: ReceptionPageComponent}
     ]),
