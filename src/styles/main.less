@@ -1,0 +1,86 @@
+@import "fonts";
+@import "variables";
+@import "prefixer";
+@import "mixins";
+@import "buttons";
+@import "forms";
+@import "text";
+
+body {
+  margin: 10px;
+}
+
+.ng2-auto-complete {
+  width: 100%;
+  z-index: 1000;
+  font-size: 16px;
+  ul {
+    cursor: pointer;
+
+    li {
+      padding: 20px 20px;
+    }
+  }
+}
+
+
+.yellow {
+  background: @yellow;
+}
+.hp-yellow {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  &:before {
+    content: " ";
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 57%;
+    .translate(-50%, -50%);
+    width: 98%;
+    height: 86%;
+    background: @yellow;
+    z-index: -1;
+  }
+  &.down-side {
+
+    a.hp-link.animated{
+
+      &:before{
+        height: 55% !important;
+      }
+      &:after{
+        margin-top: -8px !important;
+      }
+    }
+    &:before {
+      top: 64%;
+    }
+  }
+  &.overflow-font {
+
+    a.hp-link.animated2{
+
+      &:before{
+        height: 62% !important;
+      }
+
+    }
+    &:before {
+      width: 99%;
+      left: 51%;
+    }
+  }
+  @media(max-width: @screen-sm-max) {
+    &:before {
+      top: 52%;
+      height: 70%;
+    }
+    &.down-side {
+      &:before {
+        top: 65%;
+      }
+    }
+  }
+}

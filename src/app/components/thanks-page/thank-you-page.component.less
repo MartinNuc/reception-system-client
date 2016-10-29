@@ -1,0 +1,51 @@
+@import "../../../styles/variables";
+
+.heading {
+  margin: 20px;
+  text-align: center;
+  @media (min-width: @screen-md-min) {
+    text-align: left;
+  }
+}
+
+.avatar {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.info {
+  text-align: center;
+  margin: 20px;
+  @media (min-width: @screen-md-min) {
+    text-align: left;
+  }
+}
+
+.notification {
+  font-size: 20px;
+  margin: 20px 0;
+  @media (min-width: @screen-md-min) {
+    margin: 50px 0
+  }
+}
+
+.buttons {
+  margin: 20px 0;
+
+  .btn {
+    margin: 20px auto;
+    display: block;
+    text-align: center;
+
+    &.company-profile {
+      @media (min-width: @screen-md-min) {
+        float: right
+      }
+    }
+
+    @media (min-width: @screen-md-min) {
+      margin: 20px;
+      display: inline-block;
+    }
+  }
+}

@@ -2,14 +2,26 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 
 @Component({
+  styleUrls: ['./thank-you-page.component.less'],
   template: `
-    Thank you {{visitorName}},
+    <div class="heading row">
+      <h1>Thank you <span class="hp-yellow">{{visitorName}}</span>,</h1>
+    </div>
     
-    <img src="{{avatar}}">
+    <div class="row info">
+      <div class="avatar col-xs-12 col-md-4">
+        <img src="{{avatar}}">
+      </div>
+      
+      <div class="notification col-md-offset-1 col-xs-12 col-md-7">
+        <span class="hp-yellow">{{name}}</span> has been notified, please wait.
+      </div>
+    </div>
     
-    {{name}} has been notified, please wait.
-    
-    <a routerLink="/" routerLinkActive="active">Start over</a>
+    <div class="row buttons">
+      <a class="start-over btn animated arrow-left" routerLink="/">&lt; Start over</a>
+      <a class="company-profile btn animated arrow-up" routerLink="/">Company profile</a>
+    </div>
     `
 })
 export class ThankYouPageComponent implements OnInit {
