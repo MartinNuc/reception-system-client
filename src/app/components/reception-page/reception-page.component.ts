@@ -35,10 +35,11 @@ import {Router} from '@angular/router';
       </div>
       <div class="form-group">
         <label for="person">Who in {{visitorFormData.company?.name || '...'}}</label>
-        <select class="form-control" id="person" required
-                [(ngModel)]="visitorFormData.person" name="person">
-          <option *ngFor="let employee of visitorFormData.company?.employees" [ngValue]="employee">{{employee.name}}</option>
-        </select>
+        <input type="text" class="form-control" id="person" required auto-complete
+               [(ngModel)]="visitorFormData.person" name="person" [source]="visitorFormData.company?.employees"
+               value-property-name="employee"
+               display-property-name="name"
+               [disabled]="!visitorFormData.company">
       </div>
       <div class="form-group">
         <label for="reason">Reason for your visit?</label>

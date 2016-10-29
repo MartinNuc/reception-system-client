@@ -10,6 +10,7 @@ import {LicenceService} from './services/licence.service';
 import {CompanyService} from './services/company.service';
 import {VisitService} from './services/visit.service';
 import {ConfigurationService} from './services/configuration.service';
+import {Ng2AutoCompleteModule} from 'ng2-auto-complete';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {ConfigurationService} from './services/configuration.service';
       {path: 'thank-you', component: ThankYouPageComponent},
       {path: '', component: ReceptionPageComponent},
       {path: '**', component: ReceptionPageComponent}
-    ])
+    ]),
+    Ng2AutoCompleteModule
   ],
   providers: [
     CompanyService,
