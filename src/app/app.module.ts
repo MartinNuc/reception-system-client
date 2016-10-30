@@ -13,6 +13,7 @@ import {ConfigurationService} from './services/configuration.service';
 import {Ng2AutoCompleteModule} from 'ng2-auto-complete';
 import {AdminPageComponent} from './components/admin-page/admin-page.component';
 import {DatePicker} from 'ng2-datepicker/ng2-datepicker';
+import {IframeModalComponent} from './components/iframe-modal-component/iframe-modal.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {DatePicker} from 'ng2-datepicker/ng2-datepicker';
     ThankYouPageComponent,
     ReceptionPageComponent,
     AdminPageComponent,
+    IframeModalComponent,
     DatePicker
   ],
   imports: [

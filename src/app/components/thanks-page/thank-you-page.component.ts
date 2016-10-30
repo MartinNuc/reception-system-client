@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Host} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {DomSanitizer} from '@angular/platform-browser';
+import {AppComponent} from '../../app.component';
 
 @Component({
   styleUrls: ['./thank-you-page.component.less'],
@@ -20,12 +21,7 @@ import {DomSanitizer} from '@angular/platform-browser';
     </div>
     <div class="row buttons">
       <a class="start-over btn animated arrow-left" routerLink="/">&lt; Start over</a>
-      <button class="company-profile btn animated arrow-up" (click)="showHideCompanyWeb()">Company profile</button>
-    </div>
-    
-    <div *ngIf="companyWebVisible">
-      <hr>
-      <iframe class="company-web-iframe" [src]="companyUrl"></iframe>
+      <button class="company-profile btn animated arrow-up" (click)="showCompanyWeb()">Company profile</button>
     </div>
     `
 })
@@ -34,9 +30,9 @@ export class ThankYouPageComponent implements OnInit {
   private visitorName: string;
   private avatar: string;
   private companyUrl: any;
-  private companyWebVisible: boolean = false;
 
-  constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer) {
+  constructor(protected route: ActivatedRoute,
+              @Host() protected appComponent: AppComponent) {
   }
 
   ngOnInit(): void {
@@ -44,12 +40,11 @@ export class ThankYouPageComponent implements OnInit {
       this.name = params['name'];
       this.visitorName = params['visitorName'];
       this.avatar = params['avatar'];
-      this.companyUrl = this.sanitizer.bypassSecurityTrustResourceUrl(params['companyUrl']);
+      this.companyUrl = params['companyUrl'];
     });
   }
 
-  showHideCompanyWeb() {
-    this.companyWebVisible = !this.companyWebVisible;
+  showCompanyWeb() {
+    this.appComponent.iframeModal.show(this.companyUrl);
   }
-
 }

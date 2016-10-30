@@ -1,0 +1,12 @@
+<div [class.show]="isVisible" class="modal fade in danger" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="hide()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <iframe *ngIf="!!companyUrl" class="company-web-iframe" [src]="companyUrl" frameborder="0" scrolling="no" (onload)="resizeIframe(this)"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
