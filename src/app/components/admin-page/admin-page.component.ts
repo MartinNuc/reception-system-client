@@ -4,11 +4,12 @@ import {Company} from '../../models/company.model';
 import {Licence} from '../../models/licence.model';
 import {LicenceService} from '../../services/licence.service';
 import {CompanyService} from '../../services/company.service';
+import {DatePipe} from '@angular/common';
 
 @Component({
   styleUrls: ['./admin-page.component.less'],
   template: `
-    <form class="history-form" (ngSubmit)="queryCompany()" #historyForm="ngForm">
+    <form class="history-form" (ngSubmit)="displayResultOnPage()" #historyForm="ngForm">
       <div class="row">
         <div class="col-xs-12 col-sm-4">
           <label for="company">Select company</label>
@@ -29,6 +30,9 @@ import {CompanyService} from '../../services/company.service';
       
       <button type="submit" class="btn btn-yellow pull-right" [disabled]="!historyForm.form.valid">
         Query &gt;
+      </button>
+      <button type="button" class="btn export-button btn-yellow animated pull-right" (click)="downloadAsCsv()" [disabled]="!historyForm.form.valid">
+        Export as CSV
       </button>
 
     </form>
@@ -61,9 +65,32 @@ export class AdminPageComponent {
 
   constructor(protected visitsService: VisitService,
               protected companyService: CompanyService,
-              protected licenceService: LicenceService) {
+              protected licenceService: LicenceService,
+              protected datePipe: DatePipe) {
 
     this.loadCompanies();
+  }
+
+  displayResultOnPage() {
+    this.queryCompany().subscribe((data) => {
+      this.visits = data;
+    })
+  }
+
+  downloadAsCsv() {
+    this.queryCompany().subscribe((data) => {
+      var csvContent = "data:text/csv;charset=utf-8,";
+      csvContent += 'timestamp,visitor name,visitor email,reason,visitee name, visitee email\n';
+      data.forEach((row, index) => {
+        let timestamp = this.datePipe.transform(new Date(row.timestamp), 'short');
+        timestamp = timestamp.replace(',', '');
+        let dataString = `${timestamp},${row.visitor.name},${row.visitor.email},${row.reason},${row.wantsToMeet.name},${row.wantsToMeet.email}`;
+        csvContent += index < data.length ? dataString+ "\n" : dataString;
+      });
+
+      var encodedUri = encodeURI(csvContent);
+      window.open(encodedUri, 'blank');
+    })
   }
 
   queryCompany() {
@@ -84,13 +111,11 @@ export class AdminPageComponent {
       to = date.getTime();
     }
 
-    this.visitsService.query({
+    return this.visitsService.query({
       from,
       to,
       companyId: this.selectedCompany.uuid
-    }).subscribe((data) => {
-      this.visits = data;
-    })
+    });
   }
 
   loadCompanies() {

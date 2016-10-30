@@ -14,6 +14,7 @@ import {Ng2AutoCompleteModule} from 'ng2-auto-complete';
 import {AdminPageComponent} from './components/admin-page/admin-page.component';
 import {DatePicker} from 'ng2-datepicker/ng2-datepicker';
 import {IframeModalComponent} from './components/iframe-modal-component/iframe-modal.component';
+import {DatePipe} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {IframeModalComponent} from './components/iframe-modal-component/iframe-m
     CompanyService,
     LicenceService,
     VisitService,
-    ConfigurationService
+    ConfigurationService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
