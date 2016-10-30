@@ -79,8 +79,7 @@ export class AdminPageComponent {
 
   downloadAsCsv() {
     this.queryCompany().subscribe((data) => {
-      var csvContent = "data:text/csv;charset=utf-8,";
-      csvContent += 'timestamp,visitor name,visitor email,reason,visitee name, visitee email\n';
+      let csvContent = 'timestamp,visitor name,visitor email,reason,visitee name, visitee email\n';
       data.forEach((row, index) => {
         let timestamp = this.datePipe.transform(new Date(row.timestamp), 'short');
         timestamp = timestamp.replace(',', '');
@@ -88,8 +87,11 @@ export class AdminPageComponent {
         csvContent += index < data.length ? dataString+ "\n" : dataString;
       });
 
-      var encodedUri = encodeURI(csvContent);
-      window.open(encodedUri, 'blank');
+      var link = window.document.createElement("a");
+      link.setAttribute("href", "data:text/csv;charset=utf-8,%EF%BB%BF" + encodeURI(csvContent));
+      link.setAttribute("download", "export.csv");
+      link.setAttribute("target", "blank");
+      link.click();
     })
   }
 
