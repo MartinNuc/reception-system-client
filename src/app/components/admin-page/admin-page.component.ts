@@ -11,18 +11,18 @@ import {DatePipe} from '@angular/common';
   template: `
     <form class="history-form" (ngSubmit)="displayResultOnPage()" #historyForm="ngForm">
       <div class="row">
-        <div class="col-xs-12 col-sm-4">
+        <div class="col-xs-12 col-sm-4 form-group">
           <label for="company">Select company</label>
           <select class="form-control" id="company" required tabindex="4"
                   [(ngModel)]="selectedCompany" name="company">
             <option *ngFor="let company of companies" [ngValue]="company">{{company.name}}</option>
           </select>
         </div>
-        <div class="col-xs-12 col-sm-4">
+        <div class="col-xs-12 col-sm-4 form-group">
           <label for="from">From</label>
           <datepicker id="from" [(ngModel)]="from" name="from" [expanded]="true"></datepicker>
         </div>
-        <div class="col-xs-12 col-sm-4">
+        <div class="col-xs-12 col-sm-4 form-group">
           <label for="to">To</label>
           <datepicker id="from" [(ngModel)]="to" name="to" [expanded]="true"></datepicker>
         </div>
