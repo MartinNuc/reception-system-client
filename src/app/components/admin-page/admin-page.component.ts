@@ -67,9 +67,26 @@ export class AdminPageComponent {
   }
 
   queryCompany() {
+
+    let from = 0;
+    if (this.from) {
+      let date = new Date(this.from);
+      date.setHours(0);
+      date.setMinutes(0);
+      from = date.getTime()
+    }
+
+    let to = Number.MAX_SAFE_INTEGER || 9007199254740991;
+    if (this.to){
+      let date = new Date(this.to);
+      date.setHours(23);
+      date.setMinutes(59);
+      to = date.getTime();
+    }
+
     this.visitsService.query({
-      from: (this.from ? new Date(this.from).getTime() : 0),
-      to: (this.to ? new Date(this.to).getTime() : Number.MAX_SAFE_INTEGER || 9007199254740991),
+      from,
+      to,
       companyId: this.selectedCompany.uuid
     }).subscribe((data) => {
       this.visits = data;
@@ -81,6 +98,9 @@ export class AdminPageComponent {
       licence.companyIds.forEach((companyId) => {
         this.companyService.loadCompany(companyId).subscribe((company) => {
           this.companies.push(company);
+          if (!this.selectedCompany) {
+            this.selectedCompany = company;
+          }
         });
       });
     });
