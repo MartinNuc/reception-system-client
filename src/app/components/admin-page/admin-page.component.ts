@@ -27,7 +27,7 @@ import {CompanyService} from '../../services/company.service';
         </div>
       </div>
       
-      <button type="submit" class="btn animated arrow-right pull-right" [disabled]="!historyForm.form.valid">
+      <button type="submit" class="btn btn-yellow pull-right" [disabled]="!historyForm.form.valid">
         Query &gt;
       </button>
 
