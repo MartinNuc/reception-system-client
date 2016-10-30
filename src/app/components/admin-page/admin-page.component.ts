@@ -4,6 +4,7 @@ import {Company} from '../../models/company.model';
 import {Licence} from '../../models/licence.model';
 import {LicenceService} from '../../services/licence.service';
 import {CompanyService} from '../../services/company.service';
+
 @Component({
   styleUrls: ['./admin-page.component.less'],
   template: `
