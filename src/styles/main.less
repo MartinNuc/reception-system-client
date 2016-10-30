@@ -7,7 +7,6 @@
 @import "text";
 
 body {
-  margin: 10px;
   outline: 0;
 }
 
@@ -28,7 +27,9 @@ body {
   padding: 0;
 
   &.floating {
-    position: fixed;
+    position: absolute;
+    float: right;
+    z-index: -1000;
     right: 20px;
     bottom: 20px;
     width: 80px;
@@ -56,6 +57,23 @@ body {
   &:focus {
     outline: 0;
   }
+}
+
+select {
+  -webkit-appearance:none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+input[type=checkbox], input[type=radio] {
+  margin: 0
+}
+
+.background-wrapper {
+  background: rgba(255,255,255, 0.99);
+  box-shadow: 0 20px 20px rgba(255,255,255, 0.99);
+  margin: 0 0;
+  width: 100%;
 }
 
 .ng2-auto-complete {
