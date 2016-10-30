@@ -48,6 +48,9 @@ export class ReceptionPageComponent implements OnInit {
             return 0;
           });
           this.companies.push(company);
+          if (!this.visitorFormData.company) {
+            this.visitorFormData.company = company;
+          }
         })
       });
     });
